@@ -56,6 +56,7 @@ public class KafkaProducerConfig {
   }
 
   @Bean
+  // Kafka Template - PayloadDto
   public KafkaTemplate<String, PayloadDto> payloadKafkaTemplate() {
     return new KafkaTemplate<>(payloadProducerFactory());
   }

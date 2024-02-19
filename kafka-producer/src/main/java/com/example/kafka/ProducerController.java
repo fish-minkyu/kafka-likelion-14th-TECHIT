@@ -17,6 +17,7 @@ public class ProducerController {
     @RequestParam("message") String message
   ) {
     service.send(message);
+    // service.sendWithCallback();
     return "published: " + message;
   }
 

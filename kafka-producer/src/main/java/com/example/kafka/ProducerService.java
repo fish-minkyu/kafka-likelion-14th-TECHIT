@@ -20,8 +20,7 @@ public class ProducerService {
   // KafkaTemplate - PayloadDto 설정 DI
   private final KafkaTemplate<String, PayloadDto> payloadKafkaTemplate;
 
-
-
+  // 단순 메시지 보내기
   public void send(String message) {
     // partition과 key를 정해주면 하나의 partition에만 집중적으로 보낼 수 있다.
 //    stringKafkaTemplate.send(TOPIC, 0, "key", message);

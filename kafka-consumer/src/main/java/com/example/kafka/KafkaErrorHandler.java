@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+// 정해진 PayloadDto 외 메시지는 에러를 발생한다.
+// 그래서, 만약 Dto 양식과 맞지 않는 메시지가 온다면 ErrorHandler로 관리해준다.
+// 오류가 발생한 레코드를 건너뛰고 다음 레코드를 읽혀준다.
 public class KafkaErrorHandler implements CommonErrorHandler {
   @Override
   public void handleOtherException(
