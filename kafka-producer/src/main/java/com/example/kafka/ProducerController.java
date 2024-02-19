@@ -1,4 +1,4 @@
-package com.example.kafkaproducer;
+package com.example.kafka;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,18 +16,16 @@ public class ProducerController {
   public String publish(
     @RequestParam("message") String message
   ) {
-//    service.send(message);
-    service.sendWithCallback(message);
+    service.send(message);
     return "published: " + message;
   }
 
   // PayloadDto 메시지 보내기 Handler Method
   @PostMapping("/publish-json")
   public String publishJson(
-    @RequestBody
-    PayloadDto dto
+    @RequestBody PayloadDto dto
   ) {
-    service.sendDto(dto);
-    return "publish dto: " + dto;
+   service.sendDto(dto);
+   return "publish dto: " + dto;
   }
 }

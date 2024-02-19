@@ -1,4 +1,4 @@
-package com.example.kafkaproducer;
+package com.example.kafka;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.RoundRobinPartitioner;
@@ -12,7 +12,6 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 @Configuration
 public class KafkaProducerConfig {
@@ -41,6 +40,7 @@ public class KafkaProducerConfig {
     return new KafkaTemplate<>(stringProducerFactory());
   }
 
+
   // Payload 보내기
   // Producer - PayloadDto 설정
   @Bean
@@ -60,3 +60,9 @@ public class KafkaProducerConfig {
     return new KafkaTemplate<>(payloadProducerFactory());
   }
 }
+
+
+
+
+
+

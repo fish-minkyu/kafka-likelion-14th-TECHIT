@@ -1,4 +1,4 @@
-package com.example.kafkaproducer;
+package com.example.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,15 +14,18 @@ import java.util.concurrent.ExecutionException;
 @RequiredArgsConstructor
 public class ProducerService {
   // "topic" 상수화 시키기
-  private static final String TOPIC = "ttopic";
+  private static final String TOPIC = "topic";
+
   private final KafkaTemplate<String, String> stringKafkaTemplate;
   // KafkaTemplate - PayloadDto 설정 DI
   private final KafkaTemplate<String, PayloadDto> payloadKafkaTemplate;
 
+
+
   public void send(String message) {
-     stringKafkaTemplate.send(TOPIC, message);
     // partition과 key를 정해주면 하나의 partition에만 집중적으로 보낼 수 있다.
 //    stringKafkaTemplate.send(TOPIC, 0, "key", message);
+    stringKafkaTemplate.send(TOPIC, message);
   }
 
   // 비동기 send
@@ -33,7 +36,7 @@ public class ProducerService {
       = stringKafkaTemplate.send(TOPIC, message);
     // 비동기 작업이 완료되면, 그 다음 ()안에 작업을 하겠다.
     sendResultFuture.whenComplete((sendResult, throwable) -> {
-      log.info("send().whenComplete");
+      log.info("send().whenComplete()");
       log.info(String.valueOf(sendResult));
       log.info(String.valueOf(throwable));
     });
@@ -46,12 +49,12 @@ public class ProducerService {
 
   // 비동기 작업을 동기적으로 처리하기 (보내는 쪽에서 Result를 확인할 수 있다.)
   public void sendResultSync(String message) {
-    CompletableFuture<SendResult<String, String>> sendResultFuture
+    CompletableFuture<SendResult<String, String >> sendResultFuture
       = stringKafkaTemplate.send(TOPIC, message);
     // 확실히 응답을 받고 진행하고 싶다면 get()으로 가져와
     // 동기식으로 처리할 수 있다.
     try {
-      SendResult<String, String> sendResult =  sendResultFuture.get();
+      SendResult<String, String > sendResult = sendResultFuture.get();
     } catch (InterruptedException | ExecutionException ignored) {}
   }
 
