@@ -28,7 +28,7 @@ public class KafkaDtoConsumerConfig {
         configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         // 데이터 역직렬화
         configProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        configProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 
         return new DefaultKafkaConsumerFactory<>(
                 configProps,
@@ -48,10 +48,3 @@ public class KafkaDtoConsumerConfig {
         return factory;
     }
 }
-
-
-
-
-
-
-

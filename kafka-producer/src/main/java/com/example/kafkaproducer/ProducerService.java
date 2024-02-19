@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 @RequiredArgsConstructor
 public class ProducerService {
   // "topic" 상수화 시키기
-  private static final String TOPIC = "topic";
+  private static final String TOPIC = "ttopic";
   private final KafkaTemplate<String, String> stringKafkaTemplate;
   // KafkaTemplate - PayloadDto 설정 DI
   private final KafkaTemplate<String, PayloadDto> payloadKafkaTemplate;

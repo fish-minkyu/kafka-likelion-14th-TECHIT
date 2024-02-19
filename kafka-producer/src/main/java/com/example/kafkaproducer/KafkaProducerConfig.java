@@ -48,7 +48,7 @@ public class KafkaProducerConfig {
     Map<String, Object> configProps = new HashMap<>();
     // 연결할 Kafka Broker들
     configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-    // 데이터 직렬화 (java 객체를 주고 받는 방법)
+    // 데이터 직렬화
     configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
@@ -56,7 +56,6 @@ public class KafkaProducerConfig {
   }
 
   @Bean
-  // Kafka Template - PayloadDto 정의
   public KafkaTemplate<String, PayloadDto> payloadKafkaTemplate() {
     return new KafkaTemplate<>(payloadProducerFactory());
   }
