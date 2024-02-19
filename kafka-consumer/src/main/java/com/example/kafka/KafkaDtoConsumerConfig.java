@@ -44,6 +44,7 @@ public class KafkaDtoConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<String, PayloadDto> factory
                 = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(dtoConsumerFactory());
+        // Kafka Error Handler
         factory.setCommonErrorHandler(kafkaErrorHandler);
         return factory;
     }

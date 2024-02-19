@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @EnableKafka
-//@Configuration
+//@Configuration // KafkaDtoConsumerConfig와 충돌이 나므로 꺼준다.
 public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, String> stringConsumerFactory() {
