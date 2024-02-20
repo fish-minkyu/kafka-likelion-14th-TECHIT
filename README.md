@@ -37,12 +37,12 @@ log.dirs=/tmp/kafka-logs
 <div>KafkaProducerConfig: stringProducerFactory & stringKafkaTemplate</div>
 <div>KafkaService: send</div>
 <div>KafkaController: publish</div>
-
+<hr>
 - 비동기적으로 메시지 보내기(메시지에 대한 정보 확인 가능)
 <div>KafkaProducerConfig: stringProducerFactory & stringKafkaTemplate</div>
 <div>KafkaService: sendWithCallback & sendResultSync</div>
 <div>KafkaController: publish</div>
-
+<hr>
 - Dto 양식으로 메시지 보내기
 <div>KafkaProducerConfig: payloadProducerFactory & payloadKafkaTemplate</div>
 <div>KafkaService: sendDto</div>
